@@ -8,9 +8,12 @@ class StoreProfile:
             len(lines()))
         self.__npwp = "NPWP : 347934383912345".center(len(lines()))
 
-    def show_profile(self):
+    def show_intro_profile(self):
         print(lines())
         print(self.__store_name)
         print(self.__address)
         print(self.__npwp)
         print(lines())
+        
+    def show_outro_profile(self):
+        print("thank you for buying in our store.".title().center(len(lines())))

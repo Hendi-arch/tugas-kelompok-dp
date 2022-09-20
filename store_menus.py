@@ -20,6 +20,7 @@ class StoreMenus:
             StoreProduct(10, "Juices", 10000, "🧃")
         ]
         self.__selected_menus = selected_menus
+        self.__total_price_product = 0
 
     def show_main_course(self):
         print(title("Main Courses"))
@@ -38,6 +39,9 @@ class StoreMenus:
 
     def get_selected_menus(self):
         return self.__selected_menus
+    
+    def get_total_price_product(self):
+        return self.__total_price_product
 
     def pick_main_courses(self):
         print('\n')
@@ -58,6 +62,7 @@ class StoreMenus:
         if len(selected_menu) > 0:
             print(f"Added to cart : {selected_menu[0].get_product_name()} {selected_menu[0].get_icon()}")
             self.__selected_menus.append(selected_menu[0])
+            self.__total_price_product += selected_menu[0].get_price()
             self.pick_main_courses()
         elif menu_id == 0:
             print("Done.")
@@ -83,6 +88,7 @@ class StoreMenus:
             filter(lambda item: item.get_product_id() == menu_id, self.__beverages))
         if len(selected_menu) > 0:
             print(f"Added to cart : {selected_menu[0].get_product_name()} {selected_menu[0].get_icon()}")
+            self.__total_price_product += selected_menu[0].get_price()
             self.__selected_menus.append(selected_menu[0])
             self.pick_beverage()
         elif menu_id == 0:

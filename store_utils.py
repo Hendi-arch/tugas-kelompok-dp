@@ -5,14 +5,17 @@ def title(title="-", symbol="=", left_count=25, right_count=25):
 def lines(symbol='=', length=100):
     return symbol*length
 
-def is_eligible_for_discount(total: float = 0) -> bool:
-    is_eligible: bool = False
+def get_price_discount(total: float = 0) -> float:
+    price_discount: float = 0
     
     if total >= 500000:
-        print("Eligible for discount 30%", total)
+        # Eligible for discount 30%
+        price_discount = 500000 / 100 * 30
     elif total >= 300000 and total < 500000:
-        print("Eligible for discount 15%", total)
+        # Eligible for discount 15%
+        price_discount = 300000 / 100 * 15
     else:
-        print("Not eligible for discount", total)
+        # Not eligible for discount
+        pass
     
-    return is_eligible
+    return price_discount

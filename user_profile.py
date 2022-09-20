@@ -10,10 +10,10 @@ class UserProfile:
         self.__username = username
         return self.__username
 
-    def get_user_balance(self):
+    def get_user_balance(self) -> float:
         return self.__user_balance
 
-    def set_user_balance(self, user_balance):
+    def set_user_balance(self, user_balance: float) -> float:
         self.__user_balance = user_balance
         return self.__user_balance
 
@@ -28,7 +28,7 @@ class UserProfile:
             else:
                 print("Sorry, the name cannot be empty.")
 
-    def ask_balance(self):
+    def ask_balance(self, total_price_product: float):
         print("Please input your balance.")
         
         try:
@@ -42,6 +42,10 @@ class UserProfile:
         if self.__user_balance > 0:
             print('\n')
             print(f"Great {self.__username}, we are processing your order!")
+        elif self.__user_balance < total_price_product:
+            print("Sorry, your balance is less than the total price of the product.")
+            self.set_user_balance(0)
+            self.ask_balance()
         else:
             print("Sorry, your balance must be greater than zero.")
             print('\n')
