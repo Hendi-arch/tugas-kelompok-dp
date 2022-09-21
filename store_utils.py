@@ -10,10 +10,10 @@ def get_price_discount(total: float = 0) -> float:
     
     if total >= 500000:
         # Eligible for discount 30%
-        price_discount = 500000 / 100 * 30
+        price_discount = total / 100 * 30
     elif total >= 300000 and total < 500000:
         # Eligible for discount 15%
-        price_discount = 300000 / 100 * 15
+        price_discount = total / 100 * 15
     else:
         # Not eligible for discount
         pass

@@ -10,6 +10,7 @@ class StoreCart:
         self.__total_price_product = total_price_product
         self.__total_price_minus_total_discount = 0
         self.__user_balance_minus_total_price = 0
+        self.__price_discount = 0
 
     def get_username(self):
         return self.__username
@@ -24,16 +25,25 @@ class StoreCart:
         return self.__total_price_product
 
     def get_change(self):
-        return self.__user_balance
+        return self.__user_balance_minus_total_price
+    
+    def get_price_discount(self):
+        return self.__price_discount
+    
+    def get_total_price_minus_total_discount(self):
+        return self.__total_price_minus_total_discount
 
     def process_order(self):
         # Price and discount validation
-        price_discount = su.get_price_discount()
-        if price_discount > 0:
-            self.__total_price_minus_total_discount = self.__total_price_product - price_discount
+        self.__price_discount = su.get_price_discount(self.__total_price_product)
+        
+        if self.__price_discount > 0:
+            self.__total_price_minus_total_discount = self.__total_price_product - self.__price_discount
+            self.__user_balance_minus_total_price = self.__user_balance - self.__total_price_minus_total_discount
 
         # User balance validation
-        self.__user_balance_minus_total_price = self.__user_balance - self.__total_price_product
+        if self.__price_discount <= 0:
+            self.__user_balance_minus_total_price = self.__user_balance - self.__total_price_product
 
         # Show invoice order
         self.show_invoice_order()
@@ -48,6 +58,7 @@ class StoreCart:
                   "{:,.2f}".format(product.get_price()))
         print('\n')
         print("Total                    : " + "{:,.2f}".format(self.__total_price_product))
+        print("Discount                 : " + "{:,.2f}".format(self.__price_discount))
         print("Total Price Discount     : " + "{:,.2f}".format(self.__total_price_minus_total_discount))
         print("Cash                     : " + "{:,.2f}".format(self.__user_balance))
         print("Change Money             : " + "{:,.2f}".format(self.__user_balance_minus_total_price))
