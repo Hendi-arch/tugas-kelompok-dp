@@ -36,7 +36,7 @@ class UserProfile:
         except:
             print("Sorry, your balance must be greater than total price product.")
             print('\n')
-            self.ask_balance()
+            self.ask_balance(total_price_product)
             return
             
         if self.__user_balance < total_price_product:
