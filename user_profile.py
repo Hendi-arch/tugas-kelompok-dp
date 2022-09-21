@@ -38,15 +38,12 @@ class UserProfile:
             print('\n')
             self.ask_balance()
             return
-    
-        if self.__user_balance > 0:
-            print('\n')
-            print(f"Great {self.__username}, we are processing your order!")
-        elif self.__user_balance < total_price_product:
+            
+        if self.__user_balance < total_price_product:
             print("Sorry, your balance is less than the total price of the product.")
             self.set_user_balance(0)
-            self.ask_balance()
-        else:
-            print("Sorry, your balance must be greater than zero.")
             print('\n')
-            self.ask_balance()
+            self.ask_balance(total_price_product)
+        else:
+            print('\n')
+            print(f"Great {self.__username}, we are processing your order!")
