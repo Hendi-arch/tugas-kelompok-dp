@@ -34,7 +34,7 @@ class UserProfile:
         try:
             self.__user_balance = float(input("Balance : "))
         except:
-            print("Sorry, your balance must be greater than zero.")
+            print("Sorry, your balance must be greater than total price product.")
             print('\n')
             self.ask_balance()
             return
