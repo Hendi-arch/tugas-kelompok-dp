@@ -30,6 +30,7 @@ class UserProfile:
 
     def ask_balance(self, total_price_product: float):
         print("Please input your balance.")
+        print("Price to pay : Rp. " + "{:,.2f}".format(total_price_product))
         
         try:
             self.__user_balance = float(input("Balance : "))
