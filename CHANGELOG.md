@@ -1,5 +1,6 @@
 # tugas-kelompok-dasar-pemrogramman
 
 Improvements :
-- [x] Munculkan harga yang harus di bayar
+- [x] Brings up the price to pay
 - [x] Qty validation
+- [x] Improve logic in `store_menus`

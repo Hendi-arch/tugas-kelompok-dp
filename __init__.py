@@ -25,8 +25,10 @@ print("\n")
 # Menus
 sm = StoreMenus()
 sm.show_main_course()
+sm.show_pick_hint()
 sm.pick_main_courses()
 sm.show_beverage()
+sm.show_pick_hint()
 sm.pick_beverage()
 
 # Adding space
