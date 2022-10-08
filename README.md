@@ -1,6 +1,6 @@
-# tugas-kelompok-dasar-pemrogramman
+# Smart POST ( Point Of Sales )
 
-Improvements :
+Roadmaps :
 - [x] Brings up the price to pay
 - [x] Qty validation
 - [x] Improve logic in `store_menus`
