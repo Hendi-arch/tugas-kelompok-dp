@@ -22,8 +22,9 @@ class UserProfile:
         while True:
             self.__username = input("Name : ")
             if len(self.__username.strip()) > 0:
+                print('\n')
                 print(
-                    f"Hi {self.__username}, here are the menus in our store. :)")
+                    f"Hi {self.__username.capitalize()}, here are the menus in our store. :)")
                 break
             else:
                 print("Sorry, the name cannot be empty.")

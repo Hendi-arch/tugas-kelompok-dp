@@ -1,4 +1,4 @@
-from store_utils import gen_product_id, title
+from store_utils import gen_product_id, title, get_truly_words
 from store_product import StoreProduct
 
 
@@ -84,8 +84,14 @@ class StoreMenus:
                 try:
                     order_qty = int(input(
                         f"Order quantity for {selected_menu[0].get_product_name()} {selected_menu[0].get_icon()} : "))
-                    print('\n')
-                    break
+
+                    if order_qty > 0:
+                        print('\n')
+                        break
+                    else:
+                        print('\n')
+                        print("Sorry, the minimum order quantity is one.")
+                        print('\n')
                 except:
                     print('\n')
                     print("Your input is invalid.")
@@ -135,37 +141,54 @@ class StoreMenus:
         if len(selected_menu) > 0:
             while True:
                 try:
+                    is_no_drinks: bool = False
                     order_qty = int(input(
                         f"Order quantity for {selected_menu[0].get_product_name()} {selected_menu[0].get_icon()} : "))
-                    print('\n')
-                    break
+
+                    if order_qty > 0:
+                        print('\n')
+                        break
+                    else:
+                        answer: str = str(
+                            input("Are you sure you don't want to order a drink ? "))
+
+                        if answer.lower() in get_truly_words():
+                            is_no_drinks = True
+                            print('\n')
+                            break
+                        else:
+                            is_no_drinks = False
+                            print('\n')
                 except:
                     print('\n')
                     print("Your input is invalid.")
                     print('\n')
 
-            print(
-                f"Added to cart : {selected_menu[0].get_product_name()} {selected_menu[0].get_icon()} ( x{order_qty} )")
-            print('\n')
-
-            menu_exist = list(filter(lambda item: item.get_product_id(
-            ) == selected_menu[0].get_product_id(), self.__selected_menus.values()))
-
-            if len(menu_exist) <= 0:
-                selected_menu[0].set_qty(order_qty)
-                self.__selected_menus[selected_menu[0].get_product_id(
-                )] = selected_menu[0]
+            if is_no_drinks:
+                print("Done.")
             else:
-                menu_exist[0].set_qty(menu_exist[0].get_qty() + order_qty)
-                self.__selected_menus[menu_exist[0].get_product_id(
-                )] = menu_exist[0]
+                print(
+                    f"Added to cart : {selected_menu[0].get_product_name()} {selected_menu[0].get_icon()} ( x{order_qty} )")
+                print('\n')
 
-            self.__total_price_product += selected_menu[0].get_price() * \
-                order_qty
+                menu_exist = list(filter(lambda item: item.get_product_id(
+                ) == selected_menu[0].get_product_id(), self.__selected_menus.values()))
 
-            self.show_beverage()
-            self.show_pick_hint()
-            self.pick_beverage()
+                if len(menu_exist) <= 0:
+                    selected_menu[0].set_qty(order_qty)
+                    self.__selected_menus[selected_menu[0].get_product_id(
+                    )] = selected_menu[0]
+                else:
+                    menu_exist[0].set_qty(menu_exist[0].get_qty() + order_qty)
+                    self.__selected_menus[menu_exist[0].get_product_id(
+                    )] = menu_exist[0]
+
+                self.__total_price_product += selected_menu[0].get_price() * \
+                    order_qty
+
+                self.show_beverage()
+                self.show_pick_hint()
+                self.pick_beverage()
         elif menu_id == 0:
             print("Done.")
         elif len(selected_menu) == 0:

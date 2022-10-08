@@ -1,4 +1,6 @@
 import secrets as sc
+from typing import List
+
 
 def title(title="-", symbol="=", left_count=25, right_count=25):
     return f"{symbol*left_count} {title} {symbol*right_count}"
@@ -7,9 +9,10 @@ def title(title="-", symbol="=", left_count=25, right_count=25):
 def lines(symbol='=', length=100):
     return symbol*length
 
+
 def get_price_discount(total: float = 0) -> float:
     price_discount: float = 0
-    
+
     if total >= 500000:
         # Eligible for discount 30%
         price_discount = 500000 / 100 * 30
@@ -19,8 +22,13 @@ def get_price_discount(total: float = 0) -> float:
     else:
         # Not eligible for discount
         pass
-    
+
     return price_discount
+
 
 def gen_product_id() -> str:
     return sc.token_hex(8)
+
+
+def get_truly_words() -> List[str]:
+    return ['true', '1', 't', 'y', 'yes', 'ok', 'oke', 'okey', 'okay', 'yeah', 'yup', 'certainly', 'uh-huh', 'ya', 'iya', 'baik', 'iyah', 'yo', 'yah', 'benar']
