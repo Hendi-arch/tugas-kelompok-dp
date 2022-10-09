@@ -47,7 +47,6 @@ class StoreMenus:
                   "{:,.2f}".format(product.get_price()) + f" {product.get_icon()}")
 
     def show_beverage(self):
-        print('\n')
         print(title("Beverages"))
         print('\n')
         for product in self.__beverages:
