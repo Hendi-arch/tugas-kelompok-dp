@@ -2,7 +2,7 @@ from store_utils import gen_product_id
 
 
 class StoreProduct:
-    def __init__(self, index, product_name, price, icon, product_id=gen_product_id(), qty=0):
+    def __init__(self, index, product_name, price, icon, product_id, qty=0):
         self.__product_id = product_id
         self.__product_name = product_name
         self.__price = price
