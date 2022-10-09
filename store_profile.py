@@ -16,4 +16,4 @@ class StoreProfile:
         print(lines())
         
     def show_outro_profile(self):
-        print("thank you for buying in our store.".title().center(len(lines())))
+        print("thanks for visiting our store.".title().center(len(lines())))

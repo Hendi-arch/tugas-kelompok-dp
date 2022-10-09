@@ -1,4 +1,5 @@
 class UserProfile:
+
     def __init__(self, username: str = "", user_balance: int = 0):
         self.__username = username
         self.__user_balance = user_balance
@@ -18,34 +19,45 @@ class UserProfile:
         return self.__user_balance
 
     def ask_username(self):
-        print("Hello, welcome to the group 2 store, so that we can know more, may we know the names of sir and madam?")
+        print(
+            "Hello, welcome to the group 2 store, so that we can know more, may we know the names of sir and madam?"
+        )
         while True:
-            self.__username = input("Name : ")
+            self.__username = input("Name : ").title()
             if len(self.__username.strip()) > 0:
                 print('\n')
                 print(
-                    f"Hi {self.__username.capitalize()}, here are the menus in our store. :)")
+                    f"Hi {self.__username}, here are the menus in our store. :)"
+                )
                 break
             else:
                 print("Sorry, the name cannot be empty.")
 
     def ask_balance(self, total_price_product: float):
-        print("Please input your balance.")
-        print("Price to pay : Rp. " + "{:,.2f}".format(total_price_product))
-        
-        try:
-            self.__user_balance = float(input("Balance : "))
-        except:
-            print("Sorry, your balance must be greater than total price product.")
-            print('\n')
-            self.ask_balance(total_price_product)
-            return
-            
-        if self.__user_balance < total_price_product:
-            print("Sorry, your balance is less than the total price of the product.")
-            self.set_user_balance(0)
-            print('\n')
-            self.ask_balance(total_price_product)
-        else:
-            print('\n')
-            print(f"Great {self.__username}, we are processing your order!")
+        if total_price_product > 0:
+            print("Please input your balance.")
+            print("Price to pay : Rp. " +
+                  "{:,.2f}".format(total_price_product))
+
+            try:
+                self.__user_balance = float(input("Balance : "))
+            except:
+                print(
+                    "Sorry, your balance must be greater than total price product."
+                )
+                print('\n')
+                self.ask_balance(total_price_product)
+                return
+
+            if self.__user_balance < total_price_product:
+                print(
+                    "Sorry, your balance is less than the total price of the product."
+                )
+                self.set_user_balance(0)
+                print('\n')
+                self.ask_balance(total_price_product)
+            else:
+                print('\n')
+                print(
+                    f"Great {self.__username}, we are processing your order!")
+                print("\n")

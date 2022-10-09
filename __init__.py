@@ -37,9 +37,6 @@ print("\n")
 # User input balance
 up.ask_balance(sm.get_total_price_product())
 
-# Adding space
-print("\n")
-
 # Cart
 sc = StoreCart(up.get_username(), up.get_user_balance(),
                sm.get_total_price_product(), sm.get_selected_menus())
