@@ -2,13 +2,22 @@ from store_utils import gen_product_id
 
 
 class StoreProduct:
-    def __init__(self, index, product_name, price, icon, product_id, qty=0):
+
+    def __init__(self,
+                 index,
+                 product_name,
+                 price,
+                 icon,
+                 product_id,
+                 category_product,
+                 qty=0):
         self.__product_id = product_id
         self.__product_name = product_name
         self.__price = price
         self.__icon = icon
         self.__index = index
         self.__qty = qty
+        self.__category_product = category_product
 
     def __getitem__(self):
         pass
@@ -41,6 +50,9 @@ class StoreProduct:
     def get_qty(self):
         return self.__qty
 
+    def get_category_product(self):
+        return self.__category_product
+
     def set_product_id(self, new_data):
         self.__product_id = new_data
         return self.__product_id
@@ -64,3 +76,7 @@ class StoreProduct:
     def set_qty(self, new_data):
         self.__qty = new_data
         return self.__qty
+
+    def set_category_product(self, new_data):
+        self.__category_product = new_data
+        return self.__category_product

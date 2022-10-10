@@ -24,14 +24,31 @@ class UserProfile:
         )
         while True:
             self.__username = input("Name : ").title()
-            if len(self.__username.strip()) > 0:
-                print('\n')
-                print(
-                    f"Hi {self.__username}, here are the menus in our store. :)"
-                )
+
+            if self.__username.lower() == 'admin':
+                while True:
+                    password = input("Password : ")
+
+                    if password == "1234":
+                        print('\n')
+                        print(
+                            f"Hi {self.__username}, here are the products in store. :)"
+                        )
+                        break
+                    else:
+                        print('\n')
+                        print('Password does not match!')
+                        print('\n')
                 break
             else:
-                print("Sorry, the name cannot be empty.")
+                if len(self.__username.strip()) > 0:
+                    print('\n')
+                    print(
+                        f"Hi {self.__username}, here are the menus in our store. :)"
+                    )
+                    break
+                else:
+                    print("Sorry, the name cannot be empty.")
 
     def ask_balance(self, total_price_product: float):
         if total_price_product > 0:

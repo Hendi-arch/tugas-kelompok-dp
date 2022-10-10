@@ -7,7 +7,7 @@ def title(title="-", symbol="=", left_count=25, right_count=25):
 
 
 def lines(symbol='=', length=100):
-    return symbol*length
+    return symbol * length
 
 
 def get_price_discount(total: float = 0) -> float:
@@ -31,4 +31,18 @@ def gen_product_id() -> str:
 
 
 def get_truly_words() -> List[str]:
-    return ['true', '1', 't', 'y', 'yes', 'ok', 'oke', 'okey', 'okay', 'yeah', 'yup', 'certainly', 'uh-huh', 'ya', 'iya', 'baik', 'iyah', 'yo', 'yah', 'benar']
+    return [
+        'true', '1', 't', 'y', 'yes', 'ok', 'oke', 'okey', 'okay', 'yeah',
+        'yup', 'certainly', 'uh-huh', 'ya', 'iya', 'baik', 'iyah', 'yo', 'yah',
+        'benar'
+    ]
+
+
+def get_product_action():
+    options: list = [
+        'add product', 'delete product', 'change product price',
+        'change product quantity', 'change product name'
+    ]
+    
+    for index, option in enumerate(options):
+        print(f'{index + 1}. {option.title()}')
