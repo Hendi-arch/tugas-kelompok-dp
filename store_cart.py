@@ -9,13 +9,21 @@ class StoreCart:
                  user_balance: float,
                  total_price_product: float,
                  selected_menus: dict = {}):
-        self.__username = username
-        self.__selected_menus = selected_menus
-        self.__user_balance = user_balance
-        self.__total_price_product = total_price_product
-        self.__total_price_minus_total_discount = 0
-        self.__user_balance_minus_total_price = 0
-        self.__price_discount = 0
+        self.__init_attr(username, user_balance, total_price_product,
+                         selected_menus)
+
+    def __init_attr(self,
+                    username: str,
+                    user_balance: float,
+                    total_price_product: float,
+                    selected_menus: dict = {}):
+        self.__username: str = username
+        self.__price_discount: float = 0
+        self.__user_balance: float = user_balance
+        self.__selected_menus: dict = selected_menus
+        self.__user_balance_minus_total_price: float = 0
+        self.__total_price_minus_total_discount: float = 0
+        self.__total_price_product: float = total_price_product
 
     def __show_invoice_order(self):
         invoice_order_title = su.title("Invoice Order")
@@ -67,6 +75,4 @@ class StoreCart:
             # Show invoice order
             self.__show_invoice_order()
         else:
-            print(
-                f"Hi {self.__username}, you didn't order anything."
-            )
+            print(f"Hi {self.__username}, you didn't order anything.")

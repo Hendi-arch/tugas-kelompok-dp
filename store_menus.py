@@ -3,7 +3,10 @@ from store_product import StoreProduct
 
 
 class StoreMenus:
-    def __init__(self, selected_menus: dict = {}):
+    def __init__(self):
+        self.__init_attr()
+        
+    def __init_attr(self):
         self.__main_courses = [
             StoreProduct(1, "Turkey Salad Sandwich",
                          100000, "🥗", gen_product_id()),
@@ -21,7 +24,7 @@ class StoreMenus:
             StoreProduct(4, "Sparkling drinks", 99999, "🥂", gen_product_id()),
             StoreProduct(5, "Juices", 10000, "🧃", gen_product_id())
         ]
-        self.__selected_menus = selected_menus
+        self.__selected_menus = {}
         self.__total_price_product = 0
 
     def __user_input(self, caption: str):

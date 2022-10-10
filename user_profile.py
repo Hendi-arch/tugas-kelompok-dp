@@ -1,8 +1,14 @@
+from store_utils import get_truly_words
+
+
 class UserProfile:
 
-    def __init__(self, username: str = "", user_balance: int = 0):
-        self.__username = username
-        self.__user_balance = user_balance
+    def __init__(self):
+        self.__init_attr()
+
+    def __init_attr(self):
+        self.__username: str = ""
+        self.__user_balance: int = 0
 
     def get_username(self):
         return self.__username
@@ -61,3 +67,11 @@ class UserProfile:
                 print(
                     f"Great {self.__username}, we are processing your order!")
                 print("\n")
+
+    def ask_to_shop_again(self) -> bool:
+        answer: str = str(input("Want to shop again ? "))
+
+        if answer.lower() in get_truly_words():
+            return True
+        else:
+            return False
