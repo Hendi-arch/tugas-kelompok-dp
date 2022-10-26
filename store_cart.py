@@ -31,15 +31,16 @@ class StoreCart:
         print(tabulate(frame, headers='keys', tablefmt='fancy_grid'))
 
     def __show_invoice_order(self):
-        invoice_order_title = su.title("Invoice Order")
-        purchased_items_title = su.title("Purchased items",
-                                         left_count=10,
-                                         right_count=10)
-        data_frame: dict = {"No": [], "Item": [], "Price": [], "Quantity": []}
+        invoice_order_title = su.title("Invoice Order", left_count=35, right_count=35)
+        data_frame: dict = {
+            "No": [],
+            "Item": [],
+            "Price": [],
+            "Quantity": [],
+            "Subtotal": []
+        }
 
         print(invoice_order_title)
-        print('\n')
-        print(purchased_items_title)
         print('\n')
         for index, product in enumerate(self.__selected_menus.values()):
             data_frame["No"].append(index + 1)
@@ -47,10 +48,11 @@ class StoreCart:
             data_frame["Price"].append("Rp. " +
                                        "{:,.2f}".format(product.get_price()))
             data_frame["Quantity"].append(product.get_qty())
+            data_frame["Subtotal"].append(
+                "Rp. " +
+                "{:,.2f}".format(product.get_price() * product.get_qty()))
 
         self.__frame_builder(data_frame)
-        print('\n')
-        print(su.lines(length=len(purchased_items_title)))
         print('\n')
         print("Total                    : Rp. " +
               "{:,.2f}".format(self.__total_price_product))

@@ -34,7 +34,7 @@ class StoreMenus:
     def __show_current_order(self):
         if len(self.__selected_menus) > 0:
             print('\n')
-            print(title("Your current order :", left_count=10, right_count=10))
+            print(title("Your current order :", left_count=15, right_count=15))
             for order in self.__selected_menus.values():
                 qty_product = f"( x{order.get_qty()} )" if order.get_qty(
                 ) > 1 else ""
