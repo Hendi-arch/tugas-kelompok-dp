@@ -3,8 +3,10 @@ from store_product import StoreProduct
 
 
 class StoreMenus:
-
-    def __init__(self, selected_menus: dict = {}):
+    def __init__(self):
+        self.__init_attr()
+        
+    def __init_attr(self):
         self.__main_courses = [
             StoreProduct(1, "Turkey Salad Sandwich", 100000, "🥗",
                          gen_product_id(), "M"),
@@ -25,7 +27,7 @@ class StoreMenus:
                          "B"),
             StoreProduct(5, "Juices", 10000, "🧃", gen_product_id(), "B")
         ]
-        self.__selected_menus = selected_menus
+        self.__selected_menus = {}
         self.__total_price_product = 0
 
     def __user_input(self, caption: str):
@@ -35,7 +37,7 @@ class StoreMenus:
     def __show_current_order(self):
         if len(self.__selected_menus) > 0:
             print('\n')
-            print(title("Your current order :", left_count=10, right_count=10))
+            print(title("Your current order :", left_count=15, right_count=15))
             for order in self.__selected_menus.values():
                 qty_product = f"( x{order.get_qty()} )" if order.get_qty(
                 ) > 1 else ""
