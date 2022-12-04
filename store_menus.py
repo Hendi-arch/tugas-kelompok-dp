@@ -3,29 +3,27 @@ from store_product import StoreProduct
 
 
 class StoreMenus:
+
     def __init__(self):
         self.__init_attr()
-        
+
     def __init_attr(self):
         self.__main_courses = [
             StoreProduct(1, "Turkey Salad Sandwich", 100000, "🥗",
-                         gen_product_id(), "M"),
-            StoreProduct(2, "Chicken Nodle", 200000, "🍜", gen_product_id(),
-                         "M"),
-            StoreProduct(3, "Salmon Salad", 300000, "🍣", gen_product_id(),
-                         "M"),
+                         gen_product_id()),
+            StoreProduct(2, "Chicken Nodle", 200000, "🍜", gen_product_id()),
+            StoreProduct(3, "Salmon Salad", 300000, "🍣", gen_product_id()),
             StoreProduct(4, "Barbeque Chicken Chop", 177192, "🥓",
-                         gen_product_id(), "M"),
+                         gen_product_id()),
             StoreProduct(5, "Basil Roasted Chicken", 177192, "🐔",
-                         gen_product_id(), "M")
+                         gen_product_id())
         ]
         self.__beverages = [
-            StoreProduct(1, "Milk", 88000, "🥛", gen_product_id(), "B"),
-            StoreProduct(2, "Tea", 50000, "🧋", gen_product_id(), "B"),
-            StoreProduct(3, "Coffee", 30000, "☕", gen_product_id(), "B"),
-            StoreProduct(4, "Sparkling drinks", 99999, "🥂", gen_product_id(),
-                         "B"),
-            StoreProduct(5, "Juices", 10000, "🧃", gen_product_id(), "B")
+            StoreProduct(1, "Milk", 88000, "🥛", gen_product_id()),
+            StoreProduct(2, "Tea", 50000, "🧋", gen_product_id()),
+            StoreProduct(3, "Coffee", 30000, "☕", gen_product_id()),
+            StoreProduct(4, "Sparkling drinks", 99999, "🥂", gen_product_id()),
+            StoreProduct(5, "Juices", 10000, "🧃", gen_product_id())
         ]
         self.__selected_menus = {}
         self.__total_price_product = 0
@@ -46,6 +44,7 @@ class StoreMenus:
                       "{:,.2f}".format(order.get_price()) +
                       f" {order.get_icon()}" + f" {qty_product}")
 
+    # TODO: Admin operations
     def show_products(self):
         print(title("Products"))
         print('\n')
@@ -54,6 +53,22 @@ class StoreMenus:
             print(f"{index + 1}. {product.get_product_name()} - Rp. " +
                   "{:,.2f}".format(product.get_price()) +
                   f" {product.get_icon()} ( x{product.get_qty()} )")
+
+    def show_admin_hint(self):
+        print(
+            """You can control the products in this store, such as adding products, delete products,
+change the product price, change the product quantity, or change the product name."""
+        )
+        print('\n')
+
+    def show_admin_option(self):
+        print('\n')
+        print("There are 5 options to manage products.")
+        print(lines(length=50))
+        get_product_action()
+        print('\n')
+        selected_option = input('Choose option : ')
+    # TODO: End Admin operations
 
     def show_main_course(self):
         print(title("Main Courses"))
@@ -79,7 +94,7 @@ class StoreMenus:
     def get_total_price_product(self):
         return self.__total_price_product
 
-    def show_user_hint(self):
+    def show_pick_hint(self):
         print('\n')
         print(
             "You can select more than one menu above by typing the number in the menu."
@@ -87,20 +102,6 @@ class StoreMenus:
         print("Type 0 if you want to complete the order.")
         self.__show_current_order()
         print('\n')
-
-    def show_admin_hint(self):
-        print(
-            """You can control the products in this store, such as adding products, delete products,
-change the product price, change the product quantity, or change the product name.""")
-        print('\n')
-
-    def show_admin_option(self):
-        print('\n')
-        print("There are 5 options to manage products.")
-        print(lines(length=50))
-        get_product_action()
-        print('\n')
-        selected_option = input('Choose option : ')
 
     def pick_main_courses(self):
         try:
@@ -158,13 +159,13 @@ change the product price, change the product quantity, or change the product nam
                 order_qty
 
             self.show_main_course()
-            self.show_user_hint()
+            self.show_pick_hint()
             self.pick_main_courses()
         elif menu_id == 0:
             print("Done.")
         elif len(selected_menu) == 0:
             print("Menu not found, please choose correctly.")
-            self.show_user_hint()
+            self.show_pick_hint()
             self.pick_main_courses()
 
     def pick_beverage(self):
@@ -235,11 +236,11 @@ change the product price, change the product quantity, or change the product nam
                     order_qty
 
                 self.show_beverage()
-                self.show_user_hint()
+                self.show_pick_hint()
                 self.pick_beverage()
         elif menu_id == 0:
             print("Done.")
         elif len(selected_menu) == 0:
             print("Menu not found, please choose correctly.")
-            self.show_user_hint()
+            self.show_pick_hint()
             self.pick_beverage()

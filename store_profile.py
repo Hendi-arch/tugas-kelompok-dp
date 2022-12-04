@@ -2,6 +2,7 @@ from store_utils import lines
 
 
 class StoreProfile:
+
     def __init__(self):
         self.__store_name = "toko kelompok 2".title().center(len(lines()))
         self.__address = "Jl. Gatot Subroto No.8, Cimone, Kec. Karawaci, Kota Tangerang, Banten 15114".center(
@@ -14,6 +15,6 @@ class StoreProfile:
         print(self.__address)
         print(self.__npwp)
         print(lines())
-        
+
     def show_outro_profile(self):
         print("thanks for visiting our store.".title().center(len(lines())))

@@ -1,5 +1,7 @@
 import secrets as sc
 from typing import List
+import pandas as pd
+from tabulate import tabulate
 
 
 def title(title="-", symbol="=", left_count=25, right_count=25):
@@ -43,6 +45,11 @@ def get_product_action():
         'add product', 'delete product', 'change product price',
         'change product quantity', 'change product name'
     ]
-    
+
     for index, option in enumerate(options):
         print(f'{index + 1}. {option.title()}')
+
+
+def frame_builder(data_frame: dict):
+    frame = pd.DataFrame.from_dict(data_frame).set_index("No")
+    print(tabulate(frame, headers='keys', tablefmt='fancy_grid'))

@@ -1,6 +1,4 @@
 import store_utils as su
-import pandas as pd
-from tabulate import tabulate
 
 
 class StoreCart:
@@ -26,12 +24,10 @@ class StoreCart:
         self.__total_price_minus_total_discount: float = 0
         self.__total_price_product: float = total_price_product
 
-    def __frame_builder(self, data_frame: dict):
-        frame = pd.DataFrame.from_dict(data_frame).set_index("No")
-        print(tabulate(frame, headers='keys', tablefmt='fancy_grid'))
-
     def __show_invoice_order(self):
-        invoice_order_title = su.title("Invoice Order", left_count=35, right_count=35)
+        invoice_order_title = su.title("Invoice Order",
+                                       left_count=35,
+                                       right_count=35)
         data_frame: dict = {
             "No": [],
             "Item": [],
@@ -52,7 +48,7 @@ class StoreCart:
                 "Rp. " +
                 "{:,.2f}".format(product.get_price() * product.get_qty()))
 
-        self.__frame_builder(data_frame)
+        su.frame_builder(data_frame)
         print('\n')
         print("Total                    : Rp. " +
               "{:,.2f}".format(self.__total_price_product))
