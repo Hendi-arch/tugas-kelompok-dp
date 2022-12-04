@@ -1,0 +1,5 @@
+# Data analysis toolkit
+pandas
+
+# Pretty-print tabular data in Python
+tabulate
