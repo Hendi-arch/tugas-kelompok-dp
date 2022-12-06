@@ -18,3 +18,7 @@ Run the following command to install all of the required libraries:
 Via Terminal:
 
     python3 __init__.py
+
+## Presentation
+
+[Smart POST ( Point Of Sales ) Presentation](https://1drv.ms/p/s!AqIQW1p6ufxMg0lCQ441fxtAQe5R?e=BzQTz9)
